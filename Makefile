@@ -19,7 +19,10 @@ EXT_755 := dhtml
 FILES_644 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_644), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 FILES_755 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_755), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 
-default:
+default: lighttpd.conf
+
+lighttpd.conf: lighttpd.conf.in
+	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $^ > $@
 
 install:
 	install -d $(DESTDIR)$(sysconfdir)/lighttpd.d

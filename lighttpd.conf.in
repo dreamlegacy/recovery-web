@@ -1,0 +1,18 @@
+server.modules = (
+  "mod_cgi"
+)
+
+$HTTP["host"] =~ "^.*$" {
+	server.document-root = "@pkgdatadir@/"
+	index-file.names = ( "index.dhtml" )
+
+	mimetype.assign = (
+	  ".css" => "text/css",
+	  ".jpeg" => "image/jpeg",
+	  ".png" => "image/png",
+	)
+
+	static-file.exclude-extensions = ( ".dhtml", ".inc" )
+	server.port = 80
+	cgi.assign = ( ".dhtml" => "" )
+}
