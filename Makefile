@@ -25,8 +25,8 @@ lighttpd.conf: lighttpd.conf.in
 	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $^ > $@
 
 install:
-	install -d $(DESTDIR)$(sysconfdir)/lighttpd.d
-	install -m 644 lighttpd.conf $(DESTDIR)$(sysconfdir)/lighttpd.d/$(PACKAGE).conf
+	install -d $(DESTDIR)$(sysconfdir)/lighttpd/conf-enabled
+	install -m 644 lighttpd.conf $(DESTDIR)$(sysconfdir)/lighttpd/conf-enabled/99-$(PACKAGE).conf
 	for dir in $(DST_DIRS); do install -d $(DESTDIR)$$dir; done
 	for file in $(FILES_644); do install -m 644 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
 	for file in $(FILES_755); do install -m 755 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
