@@ -3,6 +3,9 @@
 if [ "${REQUEST_METHOD}" = "GET" ]; then
 	printf "Content-Type: application/octet-stream\r\n"
 	printf "Content-Disposition: inline;filename=\"mmcblk0.img\"\r\n"
+	printf "Content-Length: "
+	$((`sfdisk -s /dev/mmcblk0` * 1024))
+	printf "\r\n"
 	printf "\r\n"
 	cat /dev/mmcblk0
 else
