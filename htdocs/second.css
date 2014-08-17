@@ -1,0 +1,68 @@
+a {
+color:#fff;
+}
+a:hover {
+color:#C50E1F;
+}
+body {
+background:#60676D;
+background-image: url(images/dreambox.png);
+background-position: center 52px;
+background-repeat: no-repeat;
+color:#fff;
+font-family: Tahoma, Arial, Helvetica;
+margin-top:130px;
+margin-left:auto;
+margin-right:auto;
+width: 640px;
+}
+h1 {
+font-size: large;
+text-align: center;
+margin-top: 32px;
+margin-bottom: 32px;
+}
+img {
+margin-bottom: 32px;
+}
+table {
+border: 1px solid black;
+border-collapse:collapse;
+}
+td {
+padding: 15px;
+border: 1px solid black;
+border-collapse:collapse;
+}
+.text {
+margin-left:auto;
+margin-right:auto;
+width: 576px;
+}
+.centered {
+text-align:center;
+}
+#pbar {
+margin-left:auto;
+margin-right:auto;
+margin-top: 32px;
+margin-bottom: 32px;
+width:576px;
+padding:2px;
+background-color:#fff;
+border:0px;
+height:30px;
+}
+#pbar_indicator {
+width:0px;
+background-color:#B0B7BD;
+height:30px;
+}
+#pbar_value {
+position:relative;
+bottom:30px;
+color:black;
+width:576px;
+line-height:30px;
+text-align:center;
+}

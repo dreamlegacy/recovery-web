@@ -1,0 +1,13 @@
+#!/usr/bin/haserl -u 524288
+<%
+	if [ "${REQUEST_METHOD}" = "GET" ]; then
+		printf "Content-Type: application/octet-stream\r\n\r\n"
+		cat /dev/mmcblk0
+	else
+		printf "Content-Type: text/plain\r\n\r\n"
+		if [ -f "${FORM_files_path}" ]; then
+			flash-tarball "${FORM_files_path}"
+		fi
+	fi
+fi
+%>

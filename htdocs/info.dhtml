@@ -1,0 +1,39 @@
+#!/usr/bin/haserl
+<% page_title=info %>
+<%in include/header.inc %>
+  <h1>Device information</h1>
+  <table class="text">
+   <tr>
+    <td>Product name</td>
+    <td><% printf ${product} %></td>
+   </tr>
+   <tr>
+    <td>Booloader version</td>
+    <td><% printf ${version} %></td>
+   </tr>
+   <tr>
+    <td>Flash size</td>
+    <td><% printf ${flashsize_mb} %> MiB</td>
+   </tr>
+   <tr>
+    <td>Production date</td>
+    <td><% printf ${serial_date} %></td>
+   </tr>
+   <tr>
+    <td>mID</td>
+    <td><% printf ${mID} %></td>
+   </tr>
+   <tr>
+    <td>Serial number</td>
+    <td><% printf ${serial} %></td>
+   </tr>
+   <tr>
+    <td>MAC address</td>
+    <td><% printf ${hwaddr} %></td>
+   </tr>
+   <tr>
+    <td>Printed serial number</td>
+    <td><% printf ${aserial} %></td>
+   </tr>
+  </table>
+<%in include/footer.inc %>

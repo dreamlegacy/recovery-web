@@ -1,0 +1,6 @@
+#!/usr/bin/haserl
+<% page_title=reboot %>
+<%in include/header.inc %>
+  <h1>Rebooting...</h1>
+<%in include/footer.inc %>
+<% reboot %>

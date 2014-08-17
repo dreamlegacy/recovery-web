@@ -1,0 +1,31 @@
+#!/usr/bin/haserl
+<% page_title=index %>
+<%in include/header.inc %>
+  <h1><% printf $product %> second stage loader #<% printf $version %></h1>
+  <p>
+   <img src="images/<% printf $logo %>" alt="logo">
+  </p>
+  <div class="text">
+   <p>
+    If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot the Dreambox
+    operating system. Unless you interrupted the boot process, this usually means that
+    your Dreambox doesn't have a valid operating system installed.
+   </p>
+   <p>
+    Don't worry! It's not a problem. You can just <a href="upgrade.dhtml">
+    flash</a> a new version and everything will be fine!
+   </p>
+   <p>
+    If you're about to give up, you might get help at the
+    <a href="http://www.dream-multimedia-tv.de/board/">Dreambox support board</a>!
+   </p>
+   <p>
+    You can download the current <a href="/flash.dhtml">flash content</a>, but please
+    don't expect to be able to flash it back. It's merely a debugging feature.
+   </p>
+   <ul>
+    <li><a href="info.dhtml">Device information</a></li>
+    <li><a href="upgrade.dhtml">Firmware upgrade</a></li>
+   </ul>
+  </div>
+<%in include/footer.inc %>

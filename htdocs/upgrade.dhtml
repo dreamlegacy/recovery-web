@@ -1,0 +1,12 @@
+#!/usr/bin/haserl
+<% page_title=upgrade %>
+<%in include/header.inc %>
+  <h1>Firmware upgrade</h1>
+  <div class="centered">
+   <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
+    <p><label>Select dreambox-image tarball: <input type="file" name="files"></label></p>
+    <p><input type="submit" value="Flash!"></p>
+   </form>
+   <p>Note: The file upload may take several minutes.</p>
+  </div>
+<%in include/footer.inc %>
