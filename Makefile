@@ -19,12 +19,17 @@ EXT_755 := dhtml
 FILES_644 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_644), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 FILES_755 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_755), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 
-default: lighttpd.conf
+TARGETS := lighttpd.conf
 
-lighttpd.conf: lighttpd.conf.in
-	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $^ > $@
+default: $(TARGETS)
 
-install:
+lighttpd.conf: lighttpd.conf.in Makefile
+	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $< > $@
+
+clean:
+	$(RM) $(TARGETS)
+
+install: $(TARGETS)
 	install -d $(DESTDIR)$(sysconfdir)/lighttpd/conf-enabled
 	install -m 644 lighttpd.conf $(DESTDIR)$(sysconfdir)/lighttpd/conf-enabled/99-$(PACKAGE).conf
 	for dir in $(DST_DIRS); do install -d $(DESTDIR)$$dir; done
