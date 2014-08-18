@@ -1,18 +1,10 @@
 #!/usr/bin/haserl -u 524288
 <%
-if [ "${REQUEST_METHOD}" = "GET" ]; then
-	printf "Content-Type: application/octet-stream\r\n"
-	printf "Content-Disposition: inline;filename=\"mmcblk0.img\"\r\n"
-	printf "Content-Length: "
-	$((`sfdisk -s /dev/mmcblk0` * 1024))
-	printf "\r\n"
-	printf "\r\n"
-	cat /dev/mmcblk0
-else
+if [ "${REQUEST_METHOD}" != "GET" ]; then
 	printf "Content-Type: text/plain\r\n"
 	printf "\r\n"
 	if [ -f "${FORM_files_path}" ]; then
-		flash-tarball "${FORM_files_path}"
+		flash-tarball "${FORM_files_path}" && reboot
 	fi
 fi
 %>
