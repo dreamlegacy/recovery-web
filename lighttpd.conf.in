@@ -1,5 +1,6 @@
 server.modules = (
-  "mod_cgi"
+  "mod_cgi",
+  "mod_fastcgi"
 )
 
 $HTTP["host"] =~ "^.*$" {
@@ -15,4 +16,16 @@ $HTTP["host"] =~ "^.*$" {
 	static-file.exclude-extensions = ( ".dhtml", ".inc" )
 	server.port = 80
 	cgi.assign = ( ".dhtml" => "" )
+
+	fastcgi.server = (
+		"/sendfile/" => (
+			"fastcgi.sendfile" => (
+				"socket" => "/var/run/sendfile.socket",
+				"check-local" => "disable",
+				"bin-path" => "/usr/bin/sendfile-fcgi",
+				"max-procs" => 1,
+				"allow-x-send-file" => "enable",
+			)
+		)
+	)
 }
