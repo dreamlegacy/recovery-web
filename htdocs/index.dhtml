@@ -20,7 +20,7 @@
     <a href="http://www.dream-multimedia-tv.de/board/">Dreambox support board</a>!
    </p>
    <p>
-    You can download the current <a href="/flash.dhtml">flash content</a>, but please
+    You can download the current <a href="/sendfile/?filename=/dev/mmcblk0">flash content</a>, but please
     don't expect to be able to flash it back. It's merely a debugging feature.
    </p>
    <ul>
