@@ -4,6 +4,7 @@ PACKAGE := recovery-web
 
 prefix ?= /usr/local
 exec_prefix ?= $(prefix)
+bindir ?= $(exec_prefix)/bin
 datarootdir ?= $(prefix)/share
 datadir ?= $(datarootdir)
 sysconfdir ?= $(prefix)/etc
@@ -19,12 +20,18 @@ EXT_755 := dhtml
 FILES_644 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_644), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 FILES_755 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_755), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
 
-TARGETS := lighttpd.conf
+override CFLAGS := $(CFLAGS) -Wall -std=c99
+override CPPFLAGS := $(CPPFLAGS) -DNDEBUG
+LDLIBS := -lfcgi
+
+TARGETS := lighttpd.conf sendfile-fcgi
 
 default: $(TARGETS)
 
 lighttpd.conf: lighttpd.conf.in Makefile
 	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $< > $@
+
+sendfile-fcgi: sendfile-fcgi.c
 
 clean:
 	$(RM) $(TARGETS)
@@ -35,3 +42,5 @@ install: $(TARGETS)
 	for dir in $(DST_DIRS); do install -d $(DESTDIR)$$dir; done
 	for file in $(FILES_644); do install -m 644 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
 	for file in $(FILES_755); do install -m 755 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
+	install -d $(DESTDIR)$(bindir)
+	install -m 755 $(TARGETS) $(DESTDIR)$(bindir)
