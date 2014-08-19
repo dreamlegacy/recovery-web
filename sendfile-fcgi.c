@@ -158,7 +158,7 @@ static bool sendfile_filename(struct fcgi_context *ctx, const char *filename)
 	base = basename(filename);
 	fcgi_header(ctx, "Content-type", "application/octet-stream");
 	fcgi_header(ctx, "Content-Disposition", "attachment;filename=\"%s%s\"", base, S_ISBLK(st.st_mode) ? ".img" : "");
-	fcgi_header(ctx, "X-SendFile", filename);
+	fcgi_header(ctx, "X-SendFile", "%s", filename);
 	fcgi_newline(ctx);
 	return true;
 }
