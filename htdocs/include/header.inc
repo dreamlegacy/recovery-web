@@ -8,5 +8,9 @@ Content-Type: text/html;charset=utf-8
   <style type="text/css">
    @import url("second.css");
   </style>
+  <script type="text/javascript" src="jquery.min.js"></script>
  </head>
  <body>
+  <div class="image">
+   <img src="images/dreambox.png" alt="dreambox">
+  </div>

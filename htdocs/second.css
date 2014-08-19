@@ -6,41 +6,52 @@ color:#C50E1F;
 }
 body {
 background:#60676D;
-background-image: url(images/dreambox.png);
-background-position: center 52px;
-background-repeat: no-repeat;
 color:#fff;
-font-family: Tahoma, Arial, Helvetica;
-margin-top:130px;
+font-family:Tahoma, Arial, Helvetica;
+font-size:1.25em;
+margin-top:2.5em;
+margin-bottom:2.5em;
 margin-left:auto;
 margin-right:auto;
-width: 640px;
 }
-h1 {
-font-size: large;
-text-align: center;
-margin-top: 32px;
-margin-bottom: 32px;
+form {
+margin-top:1.5em;
+margin-bottom:1.5em;
 }
-img {
-margin-bottom: 32px;
-}
-table {
-border: 1px solid black;
-border-collapse:collapse;
+input {
+margin-top:1em;
+margin-left:1em;
+margin-bottom:1em;
 }
 td {
-padding: 15px;
-border: 1px solid black;
-border-collapse:collapse;
+border: 1px solid #fff;
+padding: 0.5em;
 }
-.text {
+.image {
+text-align:center;
+margin-top:2.5em;
+margin-bottom:2.5em;
+}
+.title {
+font-size: 1.5em;
+text-align: center;
+margin-top: 1.5em;
+margin-bottom: 1.5em;
+}
+.content {
+margin-top: 1em;
+margin-bottom: 1em;
 margin-left:auto;
 margin-right:auto;
-width: 576px;
+width:576px
 }
-.centered {
-text-align:center;
+.two_columns {
+border-collapse:collapse;
+margin-top:1.5em;
+margin-bottom:1.5em;
+margin-left:auto;
+margin-right:auto;
+width:576px
 }
 #pbar {
 margin-left:auto;

@@ -1,0 +1,33 @@
+#!/usr/bin/haserl
+<% page_title=backup %>
+<%in include/header.inc %>
+  <div class="image">
+   <img src="images/<% printf $logo_backup %>" alt="logo">
+  </div>
+  <div class="title">Firmware backup</div>
+  <div class="content">
+   <p>
+    Choose your option. All of them yield raw block device images.
+   </p>
+   <ul>
+    <% if [ -b /dev/mmcblk0 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mmcblk0">mmcblk0</a>: eMMC: Complete flash memory image</li>
+    <% fi %>
+    <% if [ -b /dev/mmcblk0p1 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mmcblk0p1">mmcblk0p1</a>: eMMC: Operating system image</li>
+    <% fi %>
+    <% if [ -b /dev/mmcblk0p2 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mmcblk0p2">mmcblk0p2</a>: eMMC: Data partition image</li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock0 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mtdblock0">mtdblock0</a>: SPI: Complete flash memory image</li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock1 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mtdblock1">mtdblock1</a>: SPI: Bootloader image</li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock2 ]; then %>
+    <li><a href="/sendfile/?filename=/dev/mtdblock2">mtdblock2</a>: SPI: Rescue partition image</li>
+    <% fi %>
+   </ul>
+  </div>
+<%in include/footer.inc %>

@@ -1,12 +1,44 @@
 #!/usr/bin/haserl
 <% page_title=upgrade %>
 <%in include/header.inc %>
-  <h1>Firmware upgrade</h1>
-  <div class="centered">
+  <script>
+    $(document).ready(function(){
+      var validate_file = function(obj) {
+        var filename = obj.val();
+        var submit = $("input:submit");
+        if (filename) {
+          var re_short = /\.t(ar|az|b2|bz|bz2|lz|xz)$/i;
+          var re_long = /\.tar\.(bz2|gz|lz|lzma|xz|Z)$/i;
+          var is_tar = filename.match(re_short) || filename.match(re_long);
+          submit.attr('disabled', !is_tar);
+          submit.show();
+        } else {
+          submit.hide();
+          submit.attr('disabled', true);
+        }
+      }
+      var file = $("input:file");
+      file.change(
+        function(){
+          validate_file($(this))
+        }
+      );
+      validate_file(file);
+    });
+  </script>
+  <div class="image">
+   <img src="images/<% printf $logo_upgrade %>" alt="logo">
+  </div>
+  <div class="title">Firmware upgrade</div>
+  <div class="content">
    <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
-    <p><label>Select dreambox-image tarball: <input type="file" name="files"></label></p>
-    <p><input type="submit" value="Flash!"></p>
+    <div class="form-description">
+     <p>Please select a firmware package to install. Typically, such a package is a compressed tarball (ending in tar.gz, tar.bz2 or tar.xz) similar to "dreambox-image.tar.xz".</p>
+     <p>For the latest releases check <a href="http://dreamboxupdate.com/">dreamboxupdate.com</a>.</p>
+    </div>
+    <div class="file-selector"><input type="file" name="files"></div>
+    <div class="submit-button"><input type="submit" value="Go!"></div>
    </form>
-   <p>Note: The file upload may take several minutes.</p>
+   <div class="footnote">Note: The file upload may take several minutes. Please be patient.</div>
   </div>
 <%in include/footer.inc %>
