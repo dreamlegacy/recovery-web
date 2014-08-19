@@ -7,30 +7,31 @@
   <div class="title"><% printf $product %> Rescue Loader #<% printf $version %></div>
   <div class="content">
    <p>
-    If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot the Dreambox
-    operating system. Unless you interrupted the boot process, this usually means that
-    your Dreambox doesn't have a valid operating system installed.
+    If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot its
+    operating system. Unless you interrupted the boot process manually, this usually
+    means that there's no valid operating system installed.
    </p>
    <p>
-    Don't worry! It's not a problem. You can just <a href="upgrade.dhtml">
-    flash</a> a new version and everything will be fine.
+    Don't worry, it's not a problem. You can just run <a href="recovery.dhtml">
+    our recovery mechanism</a>, which tries to fetch and install known-good
+    firmware from <a href="http://dreamboxupdate.com/">dreamboxupdate.com</a>, or
+    <a href="upgrade.dhtml">upload your own</a> firmware file.
    </p>
    <p>
-    If you're about to give up, you might get help at the
-    <a href="http://www.dream-multimedia-tv.de/board/">Dreambox support board</a>.
-   </p>
-   <p>
-    You may also just <a href="reboot.dhtml">reboot</a> your box and come back
-    again later.
-   </p>
-   <p>
-    It's also possible to download a <a href="backup.dhtml">backup</a> of your data.
+    It's possible to download a <a href="backup.dhtml">backup</a> of your data.
     But please don't expect to be able to restore it through this interface. It's
     merely a debugging feature.
    </p>
+   <p>
+    You may as well just <a href="reboot.dhtml">reboot</a> your box and come back
+    later, maybe after a short visit in our online
+    <a href="http://www.dream-multimedia-tv.de/board/">support board</a>, where
+    you can ask for help if required.
+   </p>
    <ul>
     <li><a href="info.dhtml">Device information</a></li>
-    <li><a href="upgrade.dhtml">Firmware upgrade</a></li>
+    <li><a href="recovery.dhtml">Online recovery</a></li>
+    <li><a href="upgrade.dhtml">Upload firmware file</a></li>
    </ul>
   </div>
 <%in include/footer.inc %>
