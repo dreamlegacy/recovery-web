@@ -43,7 +43,7 @@ margin-top: 1em;
 margin-bottom: 1em;
 margin-left:auto;
 margin-right:auto;
-width:576px
+width:576px;
 }
 .two_columns {
 border-collapse:collapse;
@@ -51,7 +51,31 @@ margin-top:1.5em;
 margin-bottom:1.5em;
 margin-left:auto;
 margin-right:auto;
-width:576px
+width:576px;
+}
+.console {
+border-radius:2em;
+color:#60676D;
+background-color:#fff;
+margin-top:1em;
+margin-bottom:1em;
+margin-left:auto;
+margin-right:auto;
+padding-left:1em;
+padding-right:1em;
+padding-top:1em;
+padding-bottom:2em;
+overflow:hidden;
+width:800px;
+}
+.console:before {
+content:'Console log:';
+display:block;
+padding-left:1em;
+padding-bottom:1em;
+}
+.console:hover {
+height:auto;
 }
 #pbar {
 margin-left:auto;

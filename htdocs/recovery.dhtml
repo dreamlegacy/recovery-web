@@ -1,19 +1,38 @@
 #!/usr/bin/haserl
 <% page_title=recovery %>
 <%in include/header.inc %>
+  <script>
+  $(document).ready(function() {
+    var pre = $("pre")
+    var cssWidth = pre.width()
+    var mouseIn = function() {
+      var width = $("code", this).width();
+      if (width > cssWidth)
+        $(this).stop(true, false).animate({width:width+"px"});
+    }
+    var mouseOut = function() {
+      $(this).stop(true, false).animate({width:cssWidth+"px"});
+    }
+    pre.hover(mouseIn, mouseOut);
+   });
+  </script>
   <div class="image">
    <img src="images/<% printf $logo_recovery %>" alt="logo">
   </div>
   <div class="title">Online Recovery</div>
-  <div class="content">
-   <form action="/run-recovery.dhtml" enctype="multipart/form-data" method="post">
-    <div class="form-description">
-     <p>Please confirm that you want to start the online recovery mechanism.</p>
-     <p>During the process, it will wipe the operating system partition, but preserve your data partition if possible.</p>
-     <p>If no internet connection is available, and you used this mechanism before, then the previously downloaded version will get used again, if still available on your data partition.</p>
-    </div>
-    <div class="submit-button"><input type="submit" value="Go!"></div>
-   </form>
-   <div class="footnote">Note: Recovery may take several minutes to complete. Please be patient.</div>
-  </div>
+  <% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
+   <div class="content">
+    <form action="/recovery.dhtml" enctype="multipart/form-data" method="post">
+     <div class="form-description">
+      <p>Please confirm that you want to start the online recovery mechanism.</p>
+      <p>During the process, it will wipe the operating system partition, but preserve your data partition if possible.</p>
+      <p>If no internet connection is available, and you used this mechanism before, then the previously downloaded version will get used again, if still available on your data partition.</p>
+     </div>
+     <div class="submit-button"><input type="submit" value="Go!"></div>
+    </form>
+    <div class="footnote">Note: Recovery may take several minutes to complete. Please be patient.</div>
+   </div>
+  <% else %>
+   <pre class="console"><code><% run-recovery -ev 2>&1 %></code></pre>
+  <% fi %>
 <%in include/footer.inc %>
