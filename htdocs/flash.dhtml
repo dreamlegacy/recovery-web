@@ -4,7 +4,7 @@ if [ "${REQUEST_METHOD}" != "GET" ]; then
 	printf "Content-Type: text/plain\r\n"
 	printf "\r\n"
 	if [ -f "${FORM_files_path}" ]; then
-		flash-tarball "${FORM_files_path}" && reboot
+		flash-tarball "${FORM_files_path}" 2>&1 && reboot
 	fi
 fi
 %>
