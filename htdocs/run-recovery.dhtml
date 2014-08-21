@@ -1,8 +1,4 @@
-#!/usr/bin/haserl -u 524288
-<%
-if [ "${REQUEST_METHOD}" != "GET" ]; then
-	printf "Content-Type: text/plain\r\n"
-	printf "\r\n"
-	run-recovery
-fi
-%>
+#!/bin/sh
+printf "Content-Type: text/plain\r\n"
+printf "\r\n"
+[ "${REQUEST_METHOD}" = "GET" ] || run-recovery 2>&1
