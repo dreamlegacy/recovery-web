@@ -24,7 +24,7 @@ override CFLAGS := $(CFLAGS) -Wall -std=c99
 override CPPFLAGS := $(CPPFLAGS) -DNDEBUG
 LDLIBS := -lfcgi
 
-TARGETS := lighttpd.conf sendfile-fcgi
+TARGETS := htmlescape lighttpd.conf sendfile-fcgi
 
 default: $(TARGETS)
 
