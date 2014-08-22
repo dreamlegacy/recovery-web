@@ -6,6 +6,11 @@
   </div>
   <div class="title"><% printf $product %> Rescue Loader #<% printf $version %></div>
   <div class="content">
+   <ul>
+    <li><a class="card" href="info.dhtml">Device information</a></li>
+    <li><a class="card" href="recovery.dhtml">Online recovery</a></li>
+    <li><a class="card" href="upgrade.dhtml">Upload firmware file</a></li>
+   </ul>
    <p>
     If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot its
     operating system. Unless you interrupted the boot process manually, this usually
@@ -28,10 +33,5 @@
     <a href="http://www.dream-multimedia-tv.de/board/">support board</a>, where
     you can ask for help if required.
    </p>
-   <ul>
-    <li><a href="info.dhtml">Device information</a></li>
-    <li><a href="recovery.dhtml">Online recovery</a></li>
-    <li><a href="upgrade.dhtml">Upload firmware file</a></li>
-   </ul>
   </div>
 <%in include/footer.inc %>

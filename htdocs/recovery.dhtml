@@ -27,11 +27,11 @@
       <p>During the process, it will wipe the operating system partition, but preserve your data partition if possible.</p>
       <p>If no internet connection is available, and you used this mechanism before, then the previously downloaded version will get used again, if still available on your data partition.</p>
      </div>
-     <div class="submit-button"><input type="submit" value="Go!"></div>
+     <div class="submit-button action-container"><input class="card" type="submit" value="Go!"></div>
     </form>
     <div class="footnote">Note: Recovery may take several minutes to complete. Please be patient.</div>
    </div>
   <% else %>
-   <pre class="console"><code><% htmlescape run-recovery -v %></code></pre>
+   <pre class="console card"><code><% htmlescape run-recovery -v %></code></pre>
   <% fi %>
 <%in include/footer.inc %>

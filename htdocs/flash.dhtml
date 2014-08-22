@@ -20,6 +20,6 @@
    <img src="images/<% printf $logo_upgrade %>" alt="logo">
   </div>
   <div class="title">Firmware upgrade</div>
-  <pre class="console"><code><% [ -f "${FORM_files_path}" ] && htmlescape flash-tarball -v "${FORM_files_path}" %></code></pre>
+  <pre class="console card"><code><% [ -f "${FORM_files_path}" ] && htmlescape flash-tarball -v "${FORM_files_path}" %></code></pre>
 <%in include/footer.inc %>
 <% fi %>

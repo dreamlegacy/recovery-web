@@ -4,13 +4,26 @@ color:#fff;
 a:hover {
 color:#C50E1F;
 }
+ul {
+height: 100%;
+float: left;
+padding: 0;
+}
+li {
+float: left;
+list-style: none;
+padding: 10px;
+width: 170px;
+font-size: 14px;
+text-align: center;
+}
 body {
 background:#60676D;
 color:#fff;
 font-family:Tahoma, Arial, Helvetica;
 font-size:1.25em;
-margin-top:2.5em;
-margin-bottom:2.5em;
+margin-top:1.5em;
+margin-bottom:1.5em;
 margin-left:auto;
 margin-right:auto;
 }
@@ -22,10 +35,44 @@ input {
 margin-top:1em;
 margin-left:1em;
 margin-bottom:1em;
+border: 0px;
+background: #FFF;
+background-image: none;
 }
 td {
 border: 1px solid #fff;
 padding: 0.5em;
+}
+.card {
+background: #fff;
+position: relative;
+padding: 10px;
+box-shadow: 0px 3px rgba( 0, 0, 0, 0.1 );
+color: #444;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+}
+
+a.card:hover,input[type="submit"]:hover{
+background: #DDD;
+text-decoration: none;
+}
+
+a.card{
+display:block;
+text-decoration: none;
+color:#000;
+}
+.action-container{
+text-align: center;
+width:100%;
+}
+.action-container input{
+width:300px;
+}
+.action-container input[type=file]{
+width:400px;
 }
 .image {
 text-align:center;
@@ -35,8 +82,6 @@ margin-bottom:2.5em;
 .title {
 font-size: 1.5em;
 text-align: center;
-margin-top: 1.5em;
-margin-bottom: 1.5em;
 }
 .content {
 margin-top: 1em;
@@ -54,9 +99,7 @@ margin-right:auto;
 width:576px;
 }
 .console {
-border-radius:2em;
 color:#60676D;
-background-color:#fff;
 margin-top:1em;
 margin-bottom:1em;
 margin-left:auto;
@@ -76,6 +119,9 @@ padding-bottom:1em;
 }
 .console:hover {
 height:auto;
+}
+.backup-options li a {
+height:70px;
 }
 #pbar {
 margin-left:auto;
