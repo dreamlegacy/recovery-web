@@ -12,6 +12,8 @@ localstatedir ?= $(prefix)/var
 runstatedir ?= $(localstatedir)/run
 pkgdatadir ?= $(datadir)/$(PACKAGE)
 
+serverport ?= 80
+
 SRC_ROOT := htdocs
 DST_ROOT := $(pkgdatadir)
 SRC_DIRS := $(SRC_ROOT) $(SRC_ROOT)/include $(SRC_ROOT)/images
@@ -34,7 +36,9 @@ default: $(TARGETS)
 lighttpd.conf: lighttpd.conf.in Makefile
 	sed -e 's,@bindir@,$(bindir),g' \
 	    -e 's,@runstatedir@,$(runstatedir),g' \
-	    -e 's,@pkgdatadir@,$(pkgdatadir),g' < $< > $@
+	    -e 's,@pkgdatadir@,$(pkgdatadir),g' \
+	    -e 's,@serverport@,$(serverport),g' \
+            < $< > $@
 
 sendfile-fcgi: sendfile-fcgi.c
 

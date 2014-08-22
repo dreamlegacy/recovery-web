@@ -14,7 +14,7 @@ $HTTP["host"] =~ "^.*$" {
 	)
 
 	static-file.exclude-extensions = ( ".dhtml", ".inc" )
-	server.port = 80
+	server.port = @serverport@
 	cgi.assign = ( ".dhtml" => "" )
 
 	fastcgi.server = (
