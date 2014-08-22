@@ -8,6 +8,8 @@ bindir ?= $(exec_prefix)/bin
 datarootdir ?= $(prefix)/share
 datadir ?= $(datarootdir)
 sysconfdir ?= $(prefix)/etc
+localstatedir ?= $(prefix)/var
+runstatedir ?= $(localstatedir)/run
 pkgdatadir ?= $(datadir)/$(PACKAGE)
 
 SRC_ROOT := htdocs
@@ -30,7 +32,9 @@ TARGETS := lighttpd.conf sendfile-fcgi
 default: $(TARGETS)
 
 lighttpd.conf: lighttpd.conf.in Makefile
-	sed -e 's,@pkgdatadir@,$(pkgdatadir),g' < $< > $@
+	sed -e 's,@bindir@,$(bindir),g' \
+	    -e 's,@runstatedir@,$(runstatedir),g' \
+	    -e 's,@pkgdatadir@,$(pkgdatadir),g' < $< > $@
 
 sendfile-fcgi: sendfile-fcgi.c
 

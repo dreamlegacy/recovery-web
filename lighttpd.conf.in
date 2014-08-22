@@ -20,9 +20,9 @@ $HTTP["host"] =~ "^.*$" {
 	fastcgi.server = (
 		"/sendfile/" => (
 			"fastcgi.sendfile" => (
-				"socket" => "/var/run/sendfile.socket",
+				"socket" => "@runstatedir@/sendfile.socket",
 				"check-local" => "disable",
-				"bin-path" => "/usr/bin/sendfile-fcgi",
+				"bin-path" => "@bindir@/sendfile-fcgi",
 				"max-procs" => 1,
 				"allow-x-send-file" => "enable",
 			)
