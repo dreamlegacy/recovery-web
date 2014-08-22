@@ -1,10 +1,25 @@
 #!/usr/bin/haserl -u 524288
-<%
-if [ "${REQUEST_METHOD}" != "GET" ]; then
-	printf "Content-Type: text/plain\r\n"
-	printf "\r\n"
-	if [ -f "${FORM_files_path}" ]; then
-		flash-tarball "${FORM_files_path}" 2>&1 && reboot
-	fi
-fi
-%>
+<% if [ "${REQUEST_METHOD}" != "GET" ]; then %>
+<% page_title=upgrade %>
+<%in include/header.inc %>
+  <script>
+    var cssWidth = 0;
+    $(document).delegate("pre", "mouseenter", function() {
+        if (cssWidth == 0)
+          cssWidth = $(this).width();
+        var width = $("code", this).width();
+        if (width > cssWidth)
+          $(this).stop(true, false).animate({width:width+"px"});
+    });
+    $(document).delegate("pre", "mouseleave", function() {
+        if (cssWidth > 0)
+          $(this).stop(true, false).animate({width:cssWidth+"px"});
+    });
+  </script>
+  <div class="image">
+   <img src="images/<% printf $logo_upgrade %>" alt="logo">
+  </div>
+  <div class="title">Firmware upgrade</div>
+  <pre class="console"><code><% [ -f "${FORM_files_path}" ] && htmlescape flash-tarball -v "${FORM_files_path}" %></code></pre>
+<%in include/footer.inc %>
+<% fi %>
