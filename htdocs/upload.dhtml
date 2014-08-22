@@ -1,5 +1,5 @@
 #!/usr/bin/haserl
-<% page_title=upgrade %>
+<% page_title=upload %>
 <%in include/header.inc %>
   <script>
     $(document).ready(function(){
@@ -27,9 +27,9 @@
     });
   </script>
   <div class="image">
-   <img src="images/<% printf $logo_upgrade %>" alt="logo">
+   <img src="images/<% printf $logo_upload %>" alt="logo">
   </div>
-  <div class="title">Firmware upgrade</div>
+  <div class="title">Firmware upload</div>
   <div class="content">
    <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
     <div class="form-description">

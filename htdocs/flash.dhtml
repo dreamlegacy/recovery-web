@@ -1,6 +1,6 @@
 #!/usr/bin/haserl -u 524288
 <% if [ "${REQUEST_METHOD}" != "GET" ]; then %>
-<% page_title=upgrade %>
+<% page_title=flash %>
 <%in include/header.inc %>
   <script>
     var cssWidth = 0;
@@ -17,9 +17,9 @@
     });
   </script>
   <div class="image">
-   <img src="images/<% printf $logo_upgrade %>" alt="logo">
+   <img src="images/<% printf $logo_upload %>" alt="logo">
   </div>
-  <div class="title">Firmware upgrade</div>
+  <div class="title">Firmware upload</div>
   <pre class="console card"><code><% [ -f "${FORM_files_path}" ] && htmlescape flash-tarball -v "${FORM_files_path}" %></code></pre>
 <%in include/footer.inc %>
 <% fi %>

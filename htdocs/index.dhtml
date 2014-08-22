@@ -9,7 +9,7 @@
    <ul>
     <li><a class="card" href="info.dhtml">Device information</a></li>
     <li><a class="card" href="recovery.dhtml">Online recovery</a></li>
-    <li><a class="card" href="upgrade.dhtml">Upload firmware file</a></li>
+    <li><a class="card" href="upload.dhtml">Firmware upload</a></li>
    </ul>
    <p>
     If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot its
@@ -20,7 +20,7 @@
     Don't worry, it's not a problem. You can just run <a href="recovery.dhtml">
     our recovery mechanism</a>, which tries to fetch and install known-good
     firmware from <a href="http://dreamboxupdate.com/">dreamboxupdate.com</a>, or
-    <a href="upgrade.dhtml">upload your own</a> firmware file.
+    <a href="upload.dhtml">upload your own</a> firmware file.
    </p>
    <p>
     It's possible to download a <a href="backup.dhtml">backup</a> of your data.
