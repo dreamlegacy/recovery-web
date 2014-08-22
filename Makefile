@@ -24,7 +24,8 @@ override CFLAGS := $(CFLAGS) -Wall -std=c99
 override CPPFLAGS := $(CPPFLAGS) -DNDEBUG
 LDLIBS := -lfcgi
 
-TARGETS := htmlescape lighttpd.conf sendfile-fcgi
+SCRIPTS := htmlescape
+TARGETS := lighttpd.conf sendfile-fcgi
 
 default: $(TARGETS)
 
@@ -43,4 +44,4 @@ install: $(TARGETS)
 	for file in $(FILES_644); do install -m 644 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
 	for file in $(FILES_755); do install -m 755 $(SRC_ROOT)/$$file $(DESTDIR)$(DST_ROOT)/$$file; done
 	install -d $(DESTDIR)$(bindir)
-	install -m 755 $(TARGETS) $(DESTDIR)$(bindir)
+	install -m 755 $(SCRIPTS) $(TARGETS) $(DESTDIR)$(bindir)
