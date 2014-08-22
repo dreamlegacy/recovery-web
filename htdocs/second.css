@@ -38,9 +38,24 @@ border: 0px;
 background: #FFF;
 background-image: none;
 }
-td {
+table {
+border-collapse:collapse;
+margin-left:auto;
+margin-right:auto;
+width:576px;
+margin-top:1.5em;
+margin-bottom:1.5em;
+}
+table.two_columns td {
 border: 1px solid #fff;
 padding: 0.5em;
+}
+table.cards td {
+font-size: 14px;
+padding-left: 10px;
+padding-right: 10px;
+text-align: center;
+width: 33.33%;
 }
 .card {
 background: #fff;
@@ -85,14 +100,6 @@ text-align: center;
 .content {
 margin-top: 1em;
 margin-bottom: 1em;
-margin-left:auto;
-margin-right:auto;
-width:576px;
-}
-.two_columns {
-border-collapse:collapse;
-margin-top:1.5em;
-margin-bottom:1.5em;
 margin-left:auto;
 margin-right:auto;
 width:576px;

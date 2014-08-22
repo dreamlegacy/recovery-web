@@ -6,11 +6,13 @@
   </div>
   <div class="title"><% printf $product %> Rescue Loader #<% printf $version %></div>
   <div class="content">
-   <ul>
-    <li><a class="card" href="info.dhtml">Device information</a></li>
-    <li><a class="card" href="recovery.dhtml">Online recovery</a></li>
-    <li><a class="card" href="upload.dhtml">Firmware upload</a></li>
-   </ul>
+   <table class="cards">
+    <tr>
+     <td><a class="card" href="info.dhtml">Device information</a></td>
+     <td><a class="card" href="recovery.dhtml">Online recovery</a></td>
+     <td><a class="card" href="upload.dhtml">Firmware upload</a></td>
+    </tr>
+   </table>
    <p>
     If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot its
     operating system. Unless you interrupted the boot process manually, this usually
