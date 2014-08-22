@@ -2,19 +2,18 @@
 <% page_title=recovery %>
 <%in include/header.inc %>
   <script>
-  $(document).ready(function() {
-    var pre = $("pre")
-    var cssWidth = pre.width()
-    var mouseIn = function() {
-      var width = $("code", this).width();
-      if (width > cssWidth)
-        $(this).stop(true, false).animate({width:width+"px"});
-    }
-    var mouseOut = function() {
-      $(this).stop(true, false).animate({width:cssWidth+"px"});
-    }
-    pre.hover(mouseIn, mouseOut);
-   });
+    var cssWidth = 0;
+    $(document).delegate("pre", "mouseenter", function() {
+        if (cssWidth == 0)
+          cssWidth = $(this).width();
+        var width = $("code", this).width();
+        if (width > cssWidth)
+          $(this).stop(true, false).animate({width:width+"px"});
+    });
+    $(document).delegate("pre", "mouseleave", function() {
+        if (cssWidth > 0)
+          $(this).stop(true, false).animate({width:cssWidth+"px"});
+    });
   </script>
   <div class="image">
    <img src="images/<% printf $logo_recovery %>" alt="logo">
