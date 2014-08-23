@@ -82,8 +82,14 @@ color:#000;
 text-align: center;
 width:100%;
 }
-.action-container input{
+.action-container input[type=submit]{
+border: 1px solid transparent;
 width:300px;
+}
+.action-container input[type=submit]:disabled{
+border: 1px solid #444;
+background:#60676D;
+color: white;
 }
 .action-container input[type=file]{
 width:480px;
