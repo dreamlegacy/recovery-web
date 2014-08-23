@@ -7,10 +7,11 @@
         var filename = obj.val();
         var submit = $("input:submit");
         if (filename) {
-          var re_short = /\.t(ar|az|b2|bz|bz2|lz|xz)$/i;
+          var re_short = /\.t(ar|az|b2|bz|bz2|gz|lz|xz)$/i;
           var re_long = /\.tar\.(bz2|gz|lz|lzma|xz|Z)$/i;
           var is_tar = filename.match(re_short) || filename.match(re_long);
           submit.attr('disabled', !is_tar);
+          submit.val(is_tar ? 'Go!' : 'Invalid file type!');
           submit.show();
         } else {
           submit.hide();
