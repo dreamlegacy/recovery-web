@@ -1,6 +1,18 @@
 #!/usr/bin/haserl
 <% page_title=reboot %>
 <%in include/header.inc %>
-  <h1>Rebooting...</h1>
+  <div class="image">
+   <img src="images/<% printf $logo_upload %>" alt="logo">
+  </div>
+  <% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
+   <div class="title">Reboot</div>
+   <div class="content">
+    <form action="reboot.dhtml" enctype="multipart/form-data" method="post">
+     <div class="submit-button action-container"><input class="card" type="submit" value="Click here to reboot"></div>
+    </form>
+   </div>
+  <% else %>
+   <div class="title">Reboot in progress...</div>
+  <% fi %>
 <%in include/footer.inc %>
-<% reboot %>
+<% [ "${REQUEST_METHOD}" = "GET" ] || reboot %>
