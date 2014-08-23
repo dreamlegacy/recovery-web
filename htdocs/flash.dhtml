@@ -21,5 +21,10 @@
   </div>
   <div class="title">Firmware upload</div>
   <pre class="console card"><code><% [ -f "${FORM_files_path}" ] && htmlescape flash-tarball -v "${FORM_files_path}" %></code></pre>
+  <div class="content">
+   <form action="reboot.dhtml" enctype="multipart/form-data" method="post">
+    <div class="submit-button action-container"><input class="card" type="submit" value="Click here to reboot"></div>
+   </form>
+  </div>
 <%in include/footer.inc %>
 <% fi %>
