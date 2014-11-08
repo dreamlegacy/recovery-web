@@ -5,6 +5,7 @@
    <img src="images/<% printf $logo_info %>" alt="logo">
   </div>
   <div class="title">Device information</div>
+  <% eval `tpm-ca` %>
   <div class="content">
    <table class="two_columns">
     <tr>
@@ -21,23 +22,23 @@
     </tr>
     <tr>
      <td>Production date</td>
-     <td><% printf ${serial_date} %></td>
+     <td><% printf ${CA_DATE} %></td>
     </tr>
     <tr>
      <td>mID</td>
-     <td><% printf ${mID} %></td>
+     <td><% printf ${CA_MID} %></td>
     </tr>
     <tr>
      <td>Serial number</td>
-     <td><% printf ${serial} %></td>
+     <td><% printf ${CA_SERIAL} %></td>
     </tr>
     <tr>
      <td>MAC address</td>
-     <td><% printf ${hwaddr} %></td>
+     <td><% printf ${CA_HWADDR} %></td>
     </tr>
     <tr>
      <td>Printed serial number</td>
-     <td><% printf ${aserial} %></td>
+     <td><% printf ${CA_ASERIAL} %></td>
     </tr>
    </table>
   </div>
