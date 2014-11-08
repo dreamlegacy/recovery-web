@@ -13,7 +13,7 @@
      <td><% printf ${product} %></td>
     </tr>
     <tr>
-     <td>Bootloader version</td>
+     <td>Rescue Loader version</td>
      <td><% printf ${version} %></td>
     </tr>
     <tr>
