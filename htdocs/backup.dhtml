@@ -6,8 +6,26 @@
   </div>
   <div class="title">Firmware backup</div>
   <div class="content">
+   <% model=`cat /proc/stb/info/model` %>
+   <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
    <p>
-    Choose your option. All of them yield raw block device images.
+    Image tarballs are suitable for <a href="upload.dhtml">Firmware upload</a>. Download a tarball to your computer to be able to restore from it anytime later.
+   </p>
+   <ul class="backup-options">
+    <li>
+    <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz ]; then %>
+    <% echo "<a class=\"card\" href=\"/sendfile/?filename=/data/.recovery/dreambox-image-$model.tar.xz\">dreambox-image-$model.tar.xz<br><br><small>Latest online recovery image</small></a>" %>
+    <% fi %>
+    </li>
+    <li>
+    <% if [ -f /data/.recovery/backup.tar.gz ]; then %>
+    <a class="card" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">backup.tar.gz<br><br><small>Latest backup</small></a>
+    <% fi %>
+    <li></li>
+   </ul>
+   <% fi %>
+   <p>
+    All options below yield raw block device images, useful for forensics or advanced recovery methods (experts only).
    </p>
    <ul class="backup-options">
     <% if [ -b /dev/mmcblk0 ]; then %>
