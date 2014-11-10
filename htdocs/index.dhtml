@@ -25,9 +25,8 @@
     <a href="upload.dhtml">upload your own</a> firmware file.
    </p>
    <p>
-    It's possible to download a <a href="backup.dhtml">backup</a> of your data.
-    But please don't expect to be able to restore it through this interface. It's
-    merely a debugging feature.
+    It's possible to <a href="new_backup.dhtml">create</a> and <a href="backup.dhtml">download</a>
+    a backup copy of your data.
    </p>
    <p>
     You may as well just <a href="reboot.dhtml">reboot</a> your box and come back
