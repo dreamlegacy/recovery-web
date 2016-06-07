@@ -21,7 +21,7 @@
   <div class="title">Create New Backup</div>
   <% if [ ! -b /dev/disk/by-label/dreambox-data ]; then %>
    <div class="content">
-    Unknown partitioning scheme detected. Please run <a href="recovery.dhtml">recovery</a> or <a href="upload.dhtml">upload</a> a valid firmware image first.
+    No data partition detected! Please attach a preformatted mass storage device, e.g. a USB flash drive, and reload this page. In order to get detected, it must contain a filesystem labeled &ldquo;dreambox-data&rdquo;. Known filesystems are <% htmlescape grep -v ^nodev /proc/filesystems | sort | awk -vORS=', ' '{print $1}' | sed -e 's:, $::' -e '$s:\(.*\),:\1 and:' %>.
    </div>
   <% elif [ "${REQUEST_METHOD}" = "GET" ]; then %>
    <div class="content">
