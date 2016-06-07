@@ -29,23 +29,20 @@
     All options below yield raw block device images, useful for forensics or advanced recovery methods (experts only).
    </p>
    <ul class="backup-options">
-    <% if [ -b /dev/mmcblk0 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0">mmcblk0<br><br><small>eMMC: Complete flash memory image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/mmcblk0p1 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p1">mmcblk0p1<br><br><small>eMMC: Operating system image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/mmcblk0p2 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p2">mmcblk0p2<br><br><small>eMMC: Data partition image</small></a></li>
-    <% fi %>
     <% if [ -b /dev/mtdblock0 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock0">mtdblock0<br><br><small>SPI: Complete flash memory image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock0">mtdblock0<br><br><small>NAND: UBI partition image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mtdblock1 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock1">mtdblock1<br><br><small>SPI: Bootloader image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock1">mtdblock1<br><br><small>NAND: Complete flash memory image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mtdblock2 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock2">mtdblock2<br><br><small>SPI: Rescue partition image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock2">mtdblock2<br><br><small>NAND: Kernel image</small></a></li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock3 ]; then %>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock3">mtdblock3<br><br><small>SPI: Complete flash memory image</small></a></li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock4 ]; then %>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock4">mtdblock4<br><br><small>NAND: UBIFS filesystem image</small></a></li>
     <% fi %>
    </ul>
   </div>
