@@ -7,7 +7,7 @@
   <div class="title">Firmware backup</div>
   <div class="content">
    <% model=`cat /proc/stb/info/model` %>
-   <% [ -b /dev/mmcblk0p2 ] && (mountpoint -q /data || mkdir /data && mount -o ro /dev/mmcblk0p2 /data) %>
+   <% [ -b /dev/mmcblk0p3 ] && (mountpoint -q /data || mkdir /data && mount -o ro /dev/mmcblk0p3 /data) %>
    <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
    <p>
     Image tarballs are suitable for <a href="upload.dhtml">Firmware upload</a>. Download a tarball to your computer to be able to restore from it anytime later.
@@ -33,19 +33,28 @@
     <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0">mmcblk0<br><br><small>eMMC: Complete flash memory image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mmcblk0p1 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p1">mmcblk0p1<br><br><small>eMMC: Operating system image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p1">mmcblk0p1<br><br><small>eMMC: Kernel image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mmcblk0p2 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p2">mmcblk0p2<br><br><small>eMMC: Data partition image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p2">mmcblk0p2<br><br><small>eMMC: Operating system image</small></a></li>
+    <% fi %>
+    <% if [ -b /dev/mmcblk0p3 ]; then %>
+    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0p3">mmcblk0p3<br><br><small>eMMC: Data partition image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mtdblock0 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock0">mtdblock0<br><br><small>SPI: Complete flash memory image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock0">mtdblock0<br><br><small>SPI: Bootloader image</small></a></li>
     <% fi %>
     <% if [ -b /dev/mtdblock1 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock1">mtdblock1<br><br><small>SPI: Bootloader image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock1">mtdblock1<br><br><small>SPI: Bootloader configuration</small></a></li>
     <% fi %>
     <% if [ -b /dev/mtdblock2 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock2">mtdblock2<br><br><small>SPI: Rescue partition image</small></a></li>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock2">mtdblock2<br><br><small>SPI: Bootloader device tree</small></a></li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock3 ]; then %>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock3">mtdblock3<br><br><small>SPI: Rescue partition image</small></a></li>
+    <% fi %>
+    <% if [ -b /dev/mtdblock4 ]; then %>
+    <li><a class="card" href="/sendfile/?filename=/dev/mtdblock4">mtdblock4<br><br><small>SPI: Complete flash memory image</small></a></li>
     <% fi %>
    </ul>
   </div>
