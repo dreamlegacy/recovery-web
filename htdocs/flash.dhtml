@@ -15,6 +15,9 @@
         if (cssWidth > 0)
           $(this).stop(true, false).animate({width:cssWidth+"px"});
     });
+    $(window).load(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, 750);
+    });
   </script>
   <div class="image">
    <img src="images/<% printf $logo_upload %>" alt="logo">
