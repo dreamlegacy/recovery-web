@@ -1,0 +1,31 @@
+#!/usr/bin/haserl
+<% page_title=settings_backup %>
+<%in include/header.inc %>
+  <script>
+    var cssWidth = 0;
+    $(document).delegate("pre", "mouseenter", function() {
+        if (cssWidth == 0)
+          cssWidth = $(this).width();
+        var width = $("code", this).width();
+        if (width > cssWidth)
+          $(this).stop(true, false).animate({width:width+"px"});
+    });
+    $(document).delegate("pre", "mouseleave", function() {
+        if (cssWidth > 0)
+          $(this).stop(true, false).animate({width:cssWidth+"px"});
+    });
+    $(window).load(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, 750);
+    });
+  </script>
+  <div class="image">
+   <img src="images/<% printf $logo_settings_backup %>" alt="Settings Backup">
+  </div>
+  <div class="title">Settings Backup</div>
+  <pre class="console card"><code><% backup-settings %></code></pre>
+  <div class="content">
+   <form action="index.dhtml" method="post">
+    <div class="submit-button action-container"><input class="card" type="submit" value="Back"></div>
+   </form>
+  </div>
+<%in include/footer.inc %>

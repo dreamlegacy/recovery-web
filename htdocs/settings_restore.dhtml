@@ -1,0 +1,52 @@
+#!/usr/bin/haserl
+<% source include/functions.inc %>
+<% page_title=settings_restore %>
+<%in include/header.inc %>
+  <script>
+    var cssWidth = 0;
+    $(document).delegate("pre", "mouseenter", function() {
+        if (cssWidth == 0)
+          cssWidth = $(this).width();
+        var width = $("code", this).width();
+        if (width > cssWidth)
+          $(this).stop(true, false).animate({width:width+"px"});
+    });
+    $(document).delegate("pre", "mouseleave", function() {
+        if (cssWidth > 0)
+          $(this).stop(true, false).animate({width:cssWidth+"px"});
+    });
+    $(window).load(function() {
+        $("html, body").animate({ scrollTop: $(document).height() }, 750);
+    });
+  </script>
+  <div class="image">
+   <img src="images/<% printf $logo_settings_restore %>" alt="Settings Restore">
+  </div>
+  <div class="title">Settings Restore</div>
+
+<% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
+   <div class="content">
+
+    <form action="/settings_restore.dhtml" enctype="multipart/form-data" method="post">
+     <div class="form-description">
+      <p>Please confirm that you want to restore previously saved settings.</p>
+      <p><b>Old settings will be overwritten during this process!</b></p>
+     </div>
+     <div class="submit-button action-container">
+<% if try_mount_data && [ -f /data/.recovery/settings.tar.gz ]; then %>
+      <input class="card" type="submit" value="Restore settings now!">
+<% else %>
+      <input class="card" type="submit" value="No backup available!" disabled>
+<% fi %>
+     </div>
+    </form>
+   </div>
+<% else %>
+  <pre class="console card"><code><% restore-settings %></code></pre>
+  <div class="content">
+   <form action="index.dhtml" method="post">
+    <div class="submit-button action-container"><input class="card" type="submit" value="Back"></div>
+   </form>
+  </div>
+<% fi %>
+<%in include/footer.inc %>

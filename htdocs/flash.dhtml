@@ -1,5 +1,6 @@
 #!/usr/bin/haserl -u 524288
 <% if [ "${REQUEST_METHOD}" != "GET" ]; then %>
+<% source include/functions.inc %>
 <% page_title=flash %>
 <%in include/header.inc %>
   <script>
@@ -23,7 +24,18 @@
    <img src="images/<% printf $logo_upload %>" alt="logo">
   </div>
   <div class="title">Firmware upload</div>
-  <pre class="console card"><code><script type="text/plain"><% [ -f "${FORM_files_path}" ] && flash-tarball -v "${FORM_files_path}" %></script></code></pre>
+  <pre class="console card">
+   <code>
+    <script type="text/plain">
+      <%
+       local options="-v"
+       [ -z "${FORM_backup_settings}" ] || options="${options} -b"
+       [ -z "${FORM_restore_settings}" ] || options="${options} -r"
+       [ -f "${FORM_files_path}" ] && flash-tarball ${options} "${FORM_files_path}"
+      %>
+    </script>
+   </code>
+  </pre>
   <div class="content">
    <form action="reboot.dhtml" enctype="multipart/form-data" method="post">
     <div class="submit-button action-container"><input class="card" type="submit" value="Click here to reboot"></div>

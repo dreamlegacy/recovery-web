@@ -6,9 +6,9 @@
   </div>
   <div class="title">Firmware backup</div>
   <div class="content">
+   <% source include/functions.inc %>
    <% model=`cat /proc/stb/info/model` %>
-   <% [ -b /dev/disk/by-label/dreambox-data ] && (mountpoint -q /data || mkdir /data && mount -o ro /dev/disk/by-label/dreambox-data /data) %>
-   <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
+   <% if try_mount_data && [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
    <p>
     Image tarballs are suitable for <a href="upload.dhtml">Firmware upload</a>. Download a tarball to your computer to be able to restore from it anytime later.
    </p>
