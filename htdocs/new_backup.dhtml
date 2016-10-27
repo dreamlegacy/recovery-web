@@ -35,7 +35,7 @@
     <div class="footnote">Note: A backup may take several minutes to complete. Please be patient.</div>
    </div>
   <% else %>
-   <pre class="console card"><code><% htmlescape backup-tarball -v %></code></pre>
+   <pre class="console card"><code><script type="text/plain"><% backup-tarball -v %></script></code></pre>
    <div class="content">
     <% if [ -f /data/.recovery/backup.tar.gz ]; then %>
     <a class="action-container card" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">Download</a>
