@@ -32,8 +32,6 @@ margin-top:1.5em;
 margin-bottom:1.5em;
 }
 input {
-margin-top:1em;
-margin-bottom:1em;
 border: 0px;
 background: #FFF;
 background-image: none;
@@ -84,6 +82,7 @@ color:#000;
 .action-container{
 text-align: center;
 width:100%;
+margin: 1em;
 }
 .action-container input[type=submit]{
 border: 1px solid transparent;
@@ -96,6 +95,12 @@ color: white;
 }
 .action-container input[type=file]{
 width:480px;
+}
+.action-container label{
+width:480px;
+display: inline-block;
+text-align: left;
+font-size: 13px;
 }
 .image {
 text-align:center;
