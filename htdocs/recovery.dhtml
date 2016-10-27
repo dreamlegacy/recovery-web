@@ -32,6 +32,6 @@
     <div class="footnote">Note: Recovery may take several minutes to complete. Please be patient.</div>
    </div>
   <% else %>
-   <pre class="console card"><code><% htmlescape run-recovery -v %></code></pre>
+   <pre class="console card"><code><script type="text/plain"><% run-recovery -v %></script></code></pre>
   <% fi %>
 <%in include/footer.inc %>
