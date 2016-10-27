@@ -13,6 +13,12 @@
      <td><a class="card" href="upload.dhtml">Firmware upload</a></td>
     </tr>
    </table>
+   <table class="cards">
+    <tr>
+     <td><a class="card" href="settings_backup.dhtml">Settings Backup</a></td>
+     <td><a class="card" href="settings_restore.dhtml">Settings Restore</a></td>
+    </tr>
+   </table>
    <p>
     If you see this, your <a href="info.dhtml">Dreambox</a> didn't boot its
     operating system. Unless you interrupted the boot process manually, this usually

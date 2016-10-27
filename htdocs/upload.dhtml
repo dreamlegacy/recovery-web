@@ -38,6 +38,7 @@
      <p>For the latest releases check <a href="http://dreamboxupdate.com/">dreamboxupdate.com</a>.</p>
     </div>
     <div class="file-selector action-container"><input class="card" type="file" name="files"></div>
+<%in include/settings_backup_restore_form.inc %>
     <div class="submit-button action-container"><input class="card" type="submit" value="Go!"></div>
    </form>
    <div class="footnote">Note: The file upload may take several minutes. Please be patient.</div>
