@@ -1,4 +1,5 @@
 #!/usr/bin/haserl
+<% source include/functions.inc %>
 <% page_title=settings_backup %>
 <%in include/header.inc %>
   <script>
@@ -22,10 +23,32 @@
    <img src="images/<% printf $logo_settings_backup %>" alt="Settings Backup">
   </div>
   <div class="title">Settings Backup</div>
+
+<% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
+   <div class="content">
+    <form action="/settings_backup.dhtml" enctype="multipart/form-data" method="post">
+     <div class="form-description">
+      <p>Please confirm that you want to backup your current settings.</p>
+      <p><b>Any previously created backup will be overwritten during this process!</b></p>
+<% if try_mount_data && [ -f /data/.recovery/settings.tar.gz ]; then %>
+      <p>You can download the current <a href="/sendfile/?filename=/data/.recovery/settings.tar.gz">settings.tar.gz here</a>.</p>
+<% fi %>
+     </div>
+     <div class="submit-button action-container">
+<% if try_mount_data; then %>
+      <input class="card" type="submit" value="Backup settings now!">
+<% else %>
+      <input class="card" type="submit" value="No backup partition available!" disabled>
+<% fi %>
+     </div>
+    </form>
+   </div>
+<% else %>
   <pre class="console card"><code><% backup-settings %></code></pre>
   <div class="content">
    <form action="index.dhtml" method="post">
     <div class="submit-button action-container"><input class="card" type="submit" value="Back"></div>
    </form>
   </div>
+<% fi %>
 <%in include/footer.inc %>
