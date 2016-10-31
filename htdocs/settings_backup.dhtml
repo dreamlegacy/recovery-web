@@ -29,8 +29,8 @@
     <form action="/settings_backup.dhtml" enctype="multipart/form-data" method="post">
      <div class="form-description">
       <p>Please confirm that you want to backup your current settings.</p>
-      <p><b>Any previously created backup will be overwritten during this process!</b></p>
 <% if try_mount_data && [ -f /data/.recovery/settings.tar.gz ]; then %>
+      <p><b>Any previously created backup will be overwritten during this process!</b></p>
       <p>You can download the current <a href="/sendfile/?filename=/data/.recovery/settings.tar.gz">settings.tar.gz here</a>.</p>
 <% fi %>
      </div>
