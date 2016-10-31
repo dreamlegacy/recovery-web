@@ -26,7 +26,6 @@
 
 <% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
    <div class="content">
-
     <form action="/settings_restore.dhtml" enctype="multipart/form-data" method="post">
      <div class="form-description">
       <p>Please confirm that you want to restore previously saved settings.</p>
