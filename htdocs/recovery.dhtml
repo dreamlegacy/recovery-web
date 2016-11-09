@@ -35,14 +35,12 @@
   <% else %>
    <pre class="console card">
     <code>
-     <script type="text/plain">
       <%
        local options="-v"
        [ -z "${FORM_backup_settings}" ] || options="${options} -b"
        [ -z "${FORM_restore_settings}" ] || options="${options} -r"
-       run-recovery ${options}
+       htmlescape run-recovery ${options}
       %>
-     </script>
     </code>
    </pre>
   <% fi %>

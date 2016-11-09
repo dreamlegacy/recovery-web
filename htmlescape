@@ -1,0 +1,2 @@
+#!/bin/sh
+exec $@ 2>&1 | stdbuf -oL sed -e 's,\&,\&amp;,g' -e 's,<,\&lt,g' -e 's,>,\&gt,g' -e 's,",\&quot;,g'
