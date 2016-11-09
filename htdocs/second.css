@@ -36,9 +36,6 @@ border: 0px;
 background: #FFF;
 background-image: none;
 }
-script[type="text/plain"] {
-display:block;
-}
 table {
 border-collapse:collapse;
 margin-left:auto;

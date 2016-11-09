@@ -41,7 +41,7 @@
     </form>
    </div>
 <% else %>
-  <pre class="console card"><code><% restore-settings %></code></pre>
+  <pre class="console card"><code><% htmlescape restore-settings %></code></pre>
   <div class="content">
    <form action="index.dhtml" method="post">
     <div class="submit-button action-container"><input class="card" type="submit" value="Back"></div>

@@ -26,14 +26,12 @@
   <div class="title">Firmware upload</div>
   <pre class="console card">
    <code>
-    <script type="text/plain">
       <%
        local options="-v"
        [ -z "${FORM_backup_settings}" ] || options="${options} -b"
        [ -z "${FORM_restore_settings}" ] || options="${options} -r"
-       [ -f "${FORM_files_path}" ] && flash-tarball ${options} "${FORM_files_path}"
+       [ -f "${FORM_files_path}" ] && htmlescape flash-tarball ${options} "${FORM_files_path}"
       %>
-    </script>
    </code>
   </pre>
   <div class="content">
