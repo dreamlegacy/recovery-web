@@ -1,6 +1,7 @@
 #!/usr/bin/haserl
 <% page_title=new_backup %>
 <%in include/header.inc %>
+  <% source include/functions.inc %>
   <script>
     var cssWidth = 0;
     $(document).delegate("pre", "mouseenter", function() {
@@ -37,7 +38,7 @@
   <% else %>
    <pre class="console card"><code><% htmlescape backup-tarball -v %></code></pre>
    <div class="content">
-    <% if [ -f /data/.recovery/backup.tar.gz ]; then %>
+    <% if try_mount_data && [ -f /data/.recovery/backup.tar.gz ]; then %>
     <a class="action-container card" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">Download</a>
     <% fi %>
    </div>
