@@ -35,7 +35,7 @@
    <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
     <div class="form-description">
      <p>Please select a firmware package to install. Typically, such a package is a compressed tarball (ending in tar.gz, tar.bz2 or tar.xz) similar to "dreambox-image.tar.xz".</p>
-     <p>For the latest releases check <a href="http://dreamboxupdate.com/">dreamboxupdate.com</a>.</p>
+     <p>For the latest releases check <a href="https://dreamboxupdate.com/">dreamboxupdate.com</a>.</p>
     </div>
     <div class="file-selector action-container"><input class="card" type="file" name="files"></div>
 <%in include/settings_backup_restore_form.inc %>
