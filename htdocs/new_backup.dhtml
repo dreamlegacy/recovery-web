@@ -20,7 +20,7 @@
    <img src="images/<% printf $logo_recovery %>" alt="logo">
   </div>
   <div class="title">Create New Backup</div>
-  <% if [ ! -b /dev/mmcblk0p3 ]; then %>
+  <% if [ ! -b /dev/dreambox-data ]; then %>
    <div class="content">
     Unknown partitioning scheme detected. Please run <a href="recovery.dhtml">recovery</a> or <a href="upload.dhtml">upload</a> a valid firmware image first.
    </div>
