@@ -27,7 +27,7 @@
   <pre class="console card">
    <code>
       <%
-       local options="-v"
+       options="-v"
        [ -z "${FORM_backup_settings}" ] || options="${options} -b"
        [ -z "${FORM_restore_settings}" ] || options="${options} -r"
        [ -f "${FORM_files_path}" ] && htmlescape flash-tarball ${options} "${FORM_files_path}"
