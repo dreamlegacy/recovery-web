@@ -1,5 +1,5 @@
 product="`tr '[a-z]' '[A-Z]' < /proc/stb/info/model`"
-version="103"
+version="104"
 logo_index="one-soc.jpeg"
 logo_info="one-psu-view.jpeg"
 logo_backup="one-emmc.jpeg"
