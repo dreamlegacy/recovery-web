@@ -8,9 +8,10 @@ $HTTP["host"] =~ "^.*$" {
 	index-file.names = ( "index.dhtml" )
 
 	mimetype.assign = (
-	  ".css" => "text/css",
-	  ".jpeg" => "image/jpeg",
-	  ".png" => "image/png",
+		".css" => "text/css",
+		".js" => "application/javascript",
+		".jpeg" => "image/jpeg",
+		".png" => "image/png",
 	)
 
 	static-file.exclude-extensions = ( ".dhtml", ".inc" )
