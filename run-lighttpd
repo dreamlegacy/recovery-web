@@ -7,7 +7,7 @@ cleanup()
         [ -z "$TEMP" ] || rm -f "$TEMP"
 }
 
-killall -w lighttpd
+#killall -w lighttpd
 
 make clean
 make bindir="${PWD}" runstatedir="${PWD}" pkgdatadir="${PWD}/htdocs" serverport=8080
@@ -25,4 +25,4 @@ server.port = 8080
 include "${PWD}/lighttpd.conf"
 EOF
 
-env -i PATH="${PATH}:${PWD}" lighttpd -f ${TEMP}
+env -i "SHELL := /bin/bash" env -i PATH="${PATH}:${PWD}" lighttpd -f ${TEMP} -D

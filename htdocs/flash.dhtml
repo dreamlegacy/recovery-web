@@ -1,43 +1,30 @@
-#!/usr/bin/haserl -u 524288
+#!/usr/bin/haserl -u 524288  --shell=/bin/bash
 <% if [ "${REQUEST_METHOD}" != "GET" ]; then %>
 <% source include/functions.inc %>
 <% page_title=flash %>
 <%in include/header.inc %>
-  <script>
-    var cssWidth = 0;
-    $(document).delegate("pre", "mouseenter", function() {
-        if (cssWidth == 0)
-          cssWidth = $(this).width();
-        var width = $("code", this).width();
-        if (width > cssWidth)
-          $(this).stop(true, false).animate({width:width+"px"});
-    });
-    $(document).delegate("pre", "mouseleave", function() {
-        if (cssWidth > 0)
-          $(this).stop(true, false).animate({width:cssWidth+"px"});
-    });
-    $(window).load(function() {
-        $("html, body").animate({ scrollTop: $(document).height() }, 750);
-    });
-  </script>
-  <div class="image">
-   <img src="images/<% printf $logo_upload %>" alt="logo">
-  </div>
+<%in include/console.inc %>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Firmware upload</div>
-  <pre class="console card">
+  <pre class="console box">
    <code>
       <%
        options="-v"
        [ -z "${FORM_backup_settings}" ] || options="${options} -b"
        [ -z "${FORM_restore_settings}" ] || options="${options} -r"
+       [ -z "${FORM_gpt_recreate}" ] || options="${options} -g"
        [ -f "${FORM_files_path}" ] && htmlescape flash-tarball ${options} "${FORM_files_path}"
       %>
    </code>
   </pre>
   <div class="content">
-   <form action="reboot.dhtml" enctype="multipart/form-data" method="post">
-    <div class="submit-button action-container"><input class="card" type="submit" value="Click here to reboot"></div>
-   </form>
+    <form action="reboot.dhtml" enctype="multipart/form-data" method="post">
+      <div class="field is-full">
+        <div class="control">
+          <input class="button is-primary is-w-100p is-medium" type="submit" value="Reboot Now">
+        </div>
+      </div>
+    </form>
   </div>
 <%in include/footer.inc %>
 <% fi %>

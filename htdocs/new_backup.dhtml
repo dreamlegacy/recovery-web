@@ -1,24 +1,9 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
 <% page_title=new_backup %>
 <%in include/header.inc %>
-  <% source include/functions.inc %>
-  <script>
-    var cssWidth = 0;
-    $(document).delegate("pre", "mouseenter", function() {
-        if (cssWidth == 0)
-          cssWidth = $(this).width();
-        var width = $("code", this).width();
-        if (width > cssWidth)
-          $(this).stop(true, false).animate({width:width+"px"});
-    });
-    $(document).delegate("pre", "mouseleave", function() {
-        if (cssWidth > 0)
-          $(this).stop(true, false).animate({width:cssWidth+"px"});
-    });
-  </script>
-  <div class="image">
-   <img src="images/<% printf $logo_recovery %>" alt="logo">
-  </div>
+<% source include/functions.inc %>
+<%in include/console.inc %>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Create New Backup</div>
   <% if [ ! -b /dev/dreambox-data ]; then %>
    <div class="content">
@@ -26,20 +11,25 @@
    </div>
   <% elif [ "${REQUEST_METHOD}" = "GET" ]; then %>
    <div class="content">
-    <form action="/new_backup.dhtml" enctype="multipart/form-data" method="post">
-     <div class="form-description">
+     <div class="block">
       <p>Please confirm that you want to backup the current operating system partition.</p>
       <p>The backup image will be saved onto the data partition. A previous backup will get overwritten. You will be able to download the backup image anytime from the <a href="backup.dhtml">backup</a> page.</p>
      </div>
-     <div class="submit-button action-container"><input class="card" type="submit" value="Go!"></div>
+
+    <form action="/new_backup.dhtml" enctype="multipart/form-data" method="post">
+      <div class="field">
+        <div class="control">
+          <input class="button is-primary is-medium" type="submit" value="Create Backup">
+        </div>
+      </div>
     </form>
     <div class="footnote">Note: A backup may take several minutes to complete. Please be patient.</div>
    </div>
   <% else %>
-   <pre class="console card"><code><% htmlescape backup-tarball -v %></code></pre>
+   <pre class="console box"><code><% htmlescape backup-tarball -v %></code></pre>
    <div class="content">
     <% if try_mount_data && [ -f /data/.recovery/backup.tar.gz ]; then %>
-    <a class="action-container card" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">Download</a>
+    <a class="button is-primary is-medium" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">Download Backup</a>
     <% fi %>
    </div>
   <% fi %>

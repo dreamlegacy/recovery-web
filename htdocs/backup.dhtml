@@ -1,58 +1,76 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
 <% page_title=backup %>
 <%in include/header.inc %>
-  <div class="image">
-   <img src="images/<% printf $logo_backup %>" alt="logo">
-  </div>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Firmware backup</div>
   <div class="content">
    <% source include/functions.inc %>
    <% model=`cat /proc/stb/info/model` %>
-   <% if try_mount_data && [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
-   <p>
+<% if try_mount_data && [ -f /data/.recovery/dreambox-image-$model.tar.xz -o -f /data/.recovery/backup.tar.gz ]; then %>
+   <p class="block">
     Image tarballs are suitable for <a href="upload.dhtml">Firmware upload</a>. Download a tarball to your computer to be able to restore from it anytime later.
    </p>
-   <ul class="backup-options">
-    <li>
-    <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz ]; then %>
-    <% echo "<a class=\"card\" href=\"/sendfile/?filename=/data/.recovery/dreambox-image-$model.tar.xz\">dreambox-image-$model.tar.xz<br><br><small>Latest online recovery image</small></a>" %>
-    <% fi %>
-    </li>
-    <li>
-    <% if [ -f /data/.recovery/backup.tar.gz ]; then %>
-    <a class="card" href="/sendfile/?filename=/data/.recovery/backup.tar.gz">backup.tar.gz<br><br><small>Latest backup</small></a>
-    <% fi %>
-    <li></li>
-   </ul>
-   <% fi %>
-   <p>
-    All options below yield raw block device images, useful for forensics or advanced recovery methods (experts only).
-   </p>
-   <ul class="backup-options">
-    <% if [ -b /dev/mmcblk0 ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/mmcblk0">mmcblk0<br><br><small>eMMC: Complete flash memory image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/bootloader ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/bootloader">bootloader<br><br><small>eMMC: Bootloader image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/reserved ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/reserved">reserved<br><br><small>eMMC: Partition table and device tree</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/env ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/env">env<br><br><small>eMMC: Bootloader configuration</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/recovery ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/recovery">recovery<br><br><small>eMMC: Rescue partition image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/boot ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/boot">boot<br><br><small>eMMC: Kernel image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/dreambox-rootfs ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/dreambox-rootfs">dreambox-rootfs<br><br><small>eMMC: Operating system image</small></a></li>
-    <% fi %>
-    <% if [ -b /dev/dreambox-data ]; then %>
-    <li><a class="card" href="/sendfile/?filename=/dev/dreambox-data">dreambox-data<br><br><small>eMMC: Data partition image</small></a></li>
-    <% fi %>
-   </ul>
+    <table class="table">
+  <% if [ -f /data/.recovery/dreambox-image-$model.tar.xz ]; then %>
+      <tr>
+        <td>Latest online recovery image</td>
+        <td><% echo "<a href=\"/sendfile/?filename=/data/.recovery/dreambox-image-$model.tar.xz\">dreambox-image-$model.tar.xz</a>" %></td>
+      </tr>
+  <% fi %>
+  <% if [ -f /data/.recovery/backup.tar.gz ]; then %>
+      <tr>
+        <td>Latest Backup</td>
+        <td><a href="/sendfile/?filename=/data/.recovery/backup.tar.gz">backup.tar.gz</a></td>
+      </tr>
+  <% fi %>
+    </table>
+<% fi %>
+  <p class="block">
+  All options below yield raw block device images, useful for forensics or advanced recovery methods (experts only).
+  </p>
+  <table class="table">
+<% if [ -b /dev/mmcblk0 ]; then %>
+    <tr>
+      <td>eMMC: Complete flash memory image</td>
+      <td><a href="/sendfile/?filename=/dev/mmcblk0">mmcblk0</a></td>
+    </tr>
+<% fi %>
+<% if [ -b /dev/bootloader ]; then %>
+    <tr>
+      <td>eMMC: Bootloader image</td>
+      <td><a href="/sendfile/?filename=/dev/bootloader">bootloader</a></td>
+    </tr>
+<% fi %>
+<% if [ -b /dev/reserved ]; then %>
+    <tr>
+      <td>eMMC: Partition table and device tree</td>
+      <td><a href="/sendfile/?filename=/dev/reserved">reserved</a></td>
+    </tr>
+<% fi %>
+<% if [ -b /dev/env ]; then %>
+    <tr>
+      <td>eMMC: Bootloader configuration</td>
+      <td><a href="/sendfile/?filename=/dev/env">env</a>
+    </tr>
+<% fi %>
+<% if [ -b /dev/recovery ]; then %>
+    <tr>
+      <td>eMMC: Rescue partition image</td>
+      <td><a href="/sendfile/?filename=/dev/recovery">recovery</a></td>
+    </tr>
+<% fi %>
+<% if [ -b /dev/dreambox-rootfs ]; then %>
+    <tr>
+      <td>eMMC: Operating system image</td>
+      <td><a href="/sendfile/?filename=/dev/dreambox-rootfs">dreambox-rootfs</a></td>
+    </tr>
+<% fi %>
+<% if [ -b /dev/dreambox-data ]; then %>
+    <tr>
+      <td>eMMC: Data partition image</td>
+      <td><a href="/sendfile/?filename=/dev/dreambox-data">dreambox-data</a></td>
+    </tr>
+<% fi %>
+   </table>
   </div>
 <%in include/footer.inc %>

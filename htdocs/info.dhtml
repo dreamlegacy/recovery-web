@@ -1,13 +1,11 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
 <% page_title=info %>
 <%in include/header.inc %>
-  <div class="image">
-   <img src="images/<% printf $logo_info %>" alt="logo">
-  </div>
+  <div class="parallax parallax-soc"></div>
   <div class="title">Device information</div>
   <% eval `tpm-ca` %>
   <div class="content">
-   <table class="two_columns">
+   <table class="table">
     <tr>
      <td>Product name</td>
      <td><% printf ${product} %></td>

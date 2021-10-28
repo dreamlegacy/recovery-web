@@ -1,21 +1,29 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
+<% source include/functions.inc %>
+
 <% page_title=upload %>
 <%in include/header.inc %>
-  <script>
+ <script>
     $(document).ready(function(){
       var validate_file = function(obj) {
         var filename = obj.val();
         var submit = $("input:submit");
+        var filelabel = $("span.file-name");
         if (filename) {
           var re_short = /\.t(ar|az|b2|bz|bz2|gz|lz|xz)$/i;
           var re_long = /\.tar\.(bz2|gz|lz|lzma|xz|Z)$/i;
           var is_tar = filename.match(re_short) || filename.match(re_long);
           submit.attr('disabled', !is_tar);
-          submit.val(is_tar ? 'Go!' : 'Invalid file type!');
+          submit.val(is_tar ? 'Upload Firmware' : 'Invalid file type!');
           submit.show();
+          var seperator = filename.lastIndexOf("\\") >= 0 ? "\\" : "/"
+          var file = filename.split(seperator);
+          file = file[file.length - 1]
+          filelabel.text(file);
         } else {
-          submit.hide();
+          submit.val("Select a file...");
           submit.attr('disabled', true);
+          filelabel.text("...");
         }
       }
       var file = $("input:file");
@@ -27,20 +35,43 @@
       validate_file(file);
     });
   </script>
-  <div class="image">
-   <img src="images/<% printf $logo_upload %>" alt="logo">
-  </div>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Firmware upload</div>
   <div class="content">
-   <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
-    <div class="form-description">
+    <div class="Block">
      <p>Please select a firmware package to install. Typically, such a package is a compressed tarball (ending in tar.gz, tar.bz2 or tar.xz) similar to "dreambox-image.tar.xz".</p>
      <p>For the latest releases check <a href="https://dreamboxupdate.com/">dreamboxupdate.com</a>.</p>
     </div>
-    <div class="file-selector action-container"><input class="card" type="file" name="files"></div>
-<%in include/settings_backup_restore_form.inc %>
-    <div class="submit-button action-container"><input class="card" type="submit" value="Go!"></div>
-   </form>
-   <div class="footnote">Note: The file upload may take several minutes. Please be patient.</div>
+
+    <div class="box">
+      <form action="/flash.dhtml" enctype="multipart/form-data" method="post">
+        <div class="field">
+          <div class="file has-name is-fullwidth">
+            <label class="file-label">
+              <input class="file-input" type="file" name="files">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="mdi mdi-file-upload"></i>
+                </span>
+                <span class="file-label">
+                  Firmware file…
+                </span>
+              </span>
+              <span class="file-name">
+                ...
+              </span>
+            </label>
+          </div>
+        </div>
+        <%in include/image_flash_options_form.inc %>
+        <blockquote>Note: The file upload may take several minutes. Please be patient.</blockquote>
+        <div class="field">
+          <div class="control">
+            <input class="button is-primary is-medium" type="submit" value="Upload Firmware">
+          </div>
+       </div>
+      </form>
+
+    </div>
   </div>
 <%in include/footer.inc %>

@@ -1,0 +1,154 @@
+html {
+    background: #37474f;
+}
+
+body {
+    background: #37474f;
+    color: #fff;
+    font-family: Tahoma, Arial, Helvetica;
+    font-size: 1.25em;
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: #00d1b2;
+}
+
+a:hover {
+    color: lightseagreen;
+}
+
+ul {
+    height: 100%;
+    float: left;
+    padding: 0;
+}
+
+li {
+    float: left;
+    list-style: none;
+    padding: 10px;
+    width: 170px;
+    font-size: 14px;
+    text-align: center;
+}
+
+form {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.button {
+    display: block;
+    transition: box-shadow .3s;
+}
+
+.button:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.is-w-100p {
+    width: 100%;
+}
+
+.table {
+    color: white;
+    background: #37474f;
+}
+
+.navbar {
+    transition: filter 0.3s;
+    background: rgba(55, 71, 79, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand a:hover {
+    filter: brightness(90%);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    background: #37474f;
+    z-index: 10;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.content {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.console {
+    color: #60676D;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    overflow: hidden;
+}
+
+.console:before {
+    content: 'Console log:';
+    display: block;
+    padding-left: 1em;
+    padding-bottom: 1em;
+}
+
+.console:hover {
+    height: auto;
+}
+
+.console code {
+    white-space: break-spaces;
+}
+
+.backup-options li a {
+    height: 70px;
+}
+
+.parallax {
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-item img {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1215px) {
+    .content {
+        width: 74%;
+    }
+    .console {
+        width: 74%;
+    }
+}
+
+@media screen and (min-width: 1216px) {
+    .content {
+        width: 900px;
+    }
+    .console {
+        width: 900px;
+    }
+}

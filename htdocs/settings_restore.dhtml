@@ -1,51 +1,33 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
 <% source include/functions.inc %>
 <% page_title=settings_restore %>
 <%in include/header.inc %>
-  <script>
-    var cssWidth = 0;
-    $(document).delegate("pre", "mouseenter", function() {
-        if (cssWidth == 0)
-          cssWidth = $(this).width();
-        var width = $("code", this).width();
-        if (width > cssWidth)
-          $(this).stop(true, false).animate({width:width+"px"});
-    });
-    $(document).delegate("pre", "mouseleave", function() {
-        if (cssWidth > 0)
-          $(this).stop(true, false).animate({width:cssWidth+"px"});
-    });
-    $(window).load(function() {
-        $("html, body").animate({ scrollTop: $(document).height() }, 750);
-    });
-  </script>
-  <div class="image">
-   <img src="images/<% printf $logo_settings_restore %>" alt="Settings Restore">
-  </div>
+<%in include/console.inc %>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Settings Restore</div>
 
 <% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
-   <div class="content">
-    <form action="/settings_restore.dhtml" enctype="multipart/form-data" method="post">
-     <div class="form-description">
+  <div class="content">
+    <div class="block">
       <p>Please confirm that you want to restore previously saved settings.</p>
       <p><b>Old settings will be overwritten during this process!</b></p>
-     </div>
-     <div class="submit-button action-container">
+    </div>
+    <form action="/settings_restore.dhtml" enctype="multipart/form-data" method="post">
+        <div class="field">
+          <div class="control">
+
 <% if try_mount_data && [ -f /data/.recovery/settings.tar.gz ]; then %>
-      <input class="card" type="submit" value="Restore settings now!">
+            <input class="button is-primary is-medium" type="submit" value="Restore settings">
 <% else %>
-      <input class="card" type="submit" value="No backup available!" disabled>
+            <input class="button is-danger is-medium" type="submit" value="No backup available" disabled>
 <% fi %>
      </div>
     </form>
    </div>
 <% else %>
-  <pre class="console card"><code><% htmlescape restore-settings %></code></pre>
+  <pre class="console box"><code><% htmlescape restore-settings %></code></pre>
   <div class="content">
-   <form action="index.dhtml" method="post">
-    <div class="submit-button action-container"><input class="card" type="submit" value="Back"></div>
-   </form>
+    <a class="button is-primary is-medium" href="index.dhtml">Back</a>
   </div>
 <% fi %>
 <%in include/footer.inc %>

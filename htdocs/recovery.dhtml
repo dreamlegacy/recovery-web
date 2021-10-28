@@ -1,39 +1,31 @@
-#!/usr/bin/haserl
+#!/usr/bin/haserl --shell=/bin/bash
+<% source include/functions.inc %>
+
 <% page_title=recovery %>
 <%in include/header.inc %>
-  <script>
-    var cssWidth = 0;
-    $(document).delegate("pre", "mouseenter", function() {
-        if (cssWidth == 0)
-          cssWidth = $(this).width();
-        var width = $("code", this).width();
-        if (width > cssWidth)
-          $(this).stop(true, false).animate({width:width+"px"});
-    });
-    $(document).delegate("pre", "mouseleave", function() {
-        if (cssWidth > 0)
-          $(this).stop(true, false).animate({width:cssWidth+"px"});
-    });
-  </script>
-  <div class="image">
-   <img src="images/<% printf $logo_recovery %>" alt="logo">
-  </div>
+  <div class="parallax parallax-mmc"></div>
   <div class="title">Online Recovery</div>
   <% if [ "${REQUEST_METHOD}" = "GET" ]; then %>
    <div class="content">
-    <form action="/recovery.dhtml" enctype="multipart/form-data" method="post">
-     <div class="form-description">
+    <div class="block">
       <p>Please confirm that you want to start the online recovery mechanism.</p>
       <p>During the process, it will wipe the operating system partition, but preserve your data partition if possible.</p>
       <p>If no internet connection is available, and you used this mechanism before, then the previously downloaded version will get used again, if still available on your data partition.</p>
      </div>
-<%in include/settings_backup_restore_form.inc %>
-     <div class="submit-button action-container"><input class="card" type="submit" value="Go!"></div>
-    </form>
-    <div class="footnote">Note: Recovery may take several minutes to complete. Please be patient.</div>
-   </div>
+    <div class="box">
+      <form action="/recovery.dhtml" enctype="multipart/form-data" method="post">
+        <%in include/image_flash_options_form.inc %>
+        <blockquote>Note: Recovery may take several minutes to complete. Please be patient.</blockquote>
+        <div class="field">
+          <div class="control">
+            <input class="button is-primary is-medium" type="submit" value="Start Recovery">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <% else %>
-   <pre class="console card">
+   <pre class="console box">
     <code>
       <%
        options="-v"

@@ -14,9 +14,9 @@ pkgdatadir ?= $(datadir)/$(PACKAGE)
 
 SRC_ROOT := htdocs
 DST_ROOT := $(pkgdatadir)
-SRC_DIRS := $(SRC_ROOT) $(SRC_ROOT)/include $(SRC_ROOT)/images
+SRC_DIRS := $(SRC_ROOT) $(SRC_ROOT)/css $(SRC_ROOT)/include $(SRC_ROOT)/images $(SRC_ROOT)/js $(SRC_ROOT)/
 DST_DIRS := $(patsubst $(SRC_ROOT)%, $(DST_ROOT)%, $(SRC_DIRS))
-EXT_644 := css inc jpeg js png
+EXT_644 := css inc jpg js png
 EXT_755 := dhtml
 
 FILES_644 := $(patsubst $(SRC_ROOT)/%, %, $(foreach ext, $(EXT_644), $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.$(ext)))))
