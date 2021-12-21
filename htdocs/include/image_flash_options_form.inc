@@ -87,6 +87,14 @@
 			</label>
 		</div>
 	</div>
+	<div class="field">
+		<div class="control">
+			<label class="checkbox">
+				<input type="checkbox" name="password_remove">
+				Set empty root password
+			</label>
+		</div>
+	</div>
 <% if is_gpt_uboot; then %>
 	<div class="field">
 		<div class="control">

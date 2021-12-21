@@ -13,6 +13,7 @@
        [ -z "${FORM_backup_settings}" ] || options="${options} -b"
        [ -z "${FORM_restore_settings}" ] || options="${options} -r"
        [ -z "${FORM_gpt_recreate}" ] || options="${options} -g"
+       [ -z "${FORM_password_remove}" ] || options="${options} -p"
        [ -f "${FORM_files_path}" ] && htmlescape flash-tarball ${options} "${FORM_files_path}"
       %>
    </code>
