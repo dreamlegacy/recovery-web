@@ -15,8 +15,14 @@ is_gpt()
 
 is_gpt_uboot()
 {
+	if is_gpt; then
+		true
+		return
+	fi
+
 	case "$product" in
 		ONE|TWO|SEVEN)
+			FLASH_DEVICE="/dev/mmcblk0"
 			;;
 		*)
 			false
@@ -24,12 +30,15 @@ is_gpt_uboot()
 			;;
 	esac
 
-	local bl_hash=$(dd "if=/dev/bootloader" "bs=$((${size} + 512))" count=1 2>/dev/null | dd skip=1 2>/dev/null | sha256sum | awk '{print $1}')
-	case "$bl_hash" in
+	local bad_uboot_sizes="1652736 1655296"
+
+	for size in ${bad_uboot_sizes}; do
+		local bl_hash=$(dd "if=/dev/bootloader" "bs=$((${size} + 512))" count=1 2>/dev/null | dd skip=1 2>/dev/null | sha256sum | awk '{print $1}')
+		case "$bl_hash" in
 			1938acdc29f2639f9b8bafc13ecb43c3d0c065ee3768b64b285d7d911ce1597d|c1c8f9a48b573198bc498698bc9c44eef5d0394bb84bb37ef59195853d012b1f|430990893f1de7984a017767ab6bc4a9086ed429a45d15930ace1773914c7fda)
-					false
-					return
-					;;
-	esac
-	true
+				false
+				return
+				;;
+		esac
+	done
 }
